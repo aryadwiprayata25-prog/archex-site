@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archex Support Center</title>
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Pusat komunikasi resmi. Tinggalkan pesan melalui live chat; AI akan merespons terlebih dahulu dan admin menindaklanjuti pada jam aktif." />
+  <style>
+    :root{
+      --bg:#0a0b10;
+      --card:#0f1117cc;           /* glass */
+      --border:#262a36;
+      --text:#e9edf5;
+      --muted:#a6afc3;
+      --accent:#18a0fb;           /* cyan-blue */
+      --accent-2:#8a5cf6;         /* violet */
+      --ok:#27d980;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:500 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial;
+      color:var(--text); background:var(--bg); overflow-x:hidden;
+    }
+
+    /* animated gradient backdrop */
+    .backdrop{
+      position:fixed; inset:-20% -20% auto -20%; height:120vh; z-index:-1;
+      background:
+        radial-gradient(35% 45% at 20% 15%, rgba(24,160,251,.35), transparent 60%),
+        radial-gradient(35% 45% at 80% 25%, rgba(138,92,246,.28), transparent 60%),
+        radial-gradient(50% 50% at 50% 90%, rgba(39,217,128,.18), transparent 60%);
+      filter:saturate(120%) blur(40px);
+      animation:float 18s ease-in-out infinite alternate;
+    }
+    @keyframes float{to{transform:translateY(-30px) translateX(10px) scale(1.02)}}
+
+    .container{max-width:1080px; margin:0 auto; padding:38px 22px 70px}
+
+    /* top nav (brand minimal) */
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+    }
+    .logo{
+      width:42px; height:42px; border-radius:12px; display:grid; place-items:center;
+      background:linear-gradient(145deg, var(--accent), var(--accent-2));
+      color:white; font-weight:800; letter-spacing:.5px; box-shadow:var(--shadow);
+    }
+    .brand h1{margin:0; font-size:18px; font-weight:700; letter-spacing:.3px}
+    .badge{
+      padding:6px 10px; border-radius:999px; border:1px solid #1e2433; color:var(--muted); font-size:12px;
+      background:linear-gradient(180deg, #0d1017 0%, #0b0e14 100%); backdrop-filter: blur(8px);
+    }
+
+    /* hero */
+    .hero{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(17,20,29,.78), rgba(12,14,20,.78));
+      backdrop-filter: blur(12px);
+      border-radius:calc(var(--radius) + 6px);
+      padding:44px 28px; box-shadow:var(--shadow);
+    }
+    .title{
+      font-size:34px; line-height:1.15; margin:0 0 10px; letter-spacing:.2px;
+    }
+    .subtitle{margin:0; color:var(--muted)}
+    .status{
+      display:inline-flex; align-items:center; gap:8px; margin-top:18px; padding:8px 12px;
+      border-radius:10px; border:1px solid #1f2635;
+      background:linear-gradient(180deg,#0f1320,#0b0f1a);
+      color:#cfe9d9; font-size:13px;
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 10px var(--ok)}
+
+    /* actions */
+    .actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px}
+    .btn{
+      appearance:none; border:1px solid #233049; color:white; text-decoration:none; cursor:pointer;
+      background:
+        linear-gradient(180deg, rgba(27,33,52,.9), rgba(16,21,34,.9));
+      padding:12px 16px; border-radius:12px; transition:.18s transform, .18s box-shadow, .18s border-color;
+      display:inline-flex; align-items:center; gap:10px; font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:#2f3b63; box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .btn.primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color:transparent;
+    }
+
+    /* grid cards */
+    .grid{display:grid; gap:16px; margin-top:18px}
+    @media(min-width:860px){ .grid{grid-template-columns:1.2fr .8fr} }
+
+    .card{
+      border:1px solid var(--border);
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border-radius:var(--radius);
+      padding:22px;
+    }
+    .card h3{margin:0 0 6px; font-size:18px}
+    .meta{color:var(--muted); font-size:14px; margin:0}
+
+    /* footer */
+    footer{margin-top:42px; padding-top:20px; border-top:1px solid var(--border); color:var(--muted); font-size:13px}
+    .small{font-size:12px; color:#8e96ac}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <div class="container">
+    <!-- NAV / BRAND -->
+    <div class="nav">
+      <a class="brand" href="#">
+        <div class="logo">AS</div>
+        <h1>Archex Support</h1>
+      </a>
+      <span class="badge mono">Since 2025</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2 class="title">Pusat Komunikasi Resmi</h2>
+      <p class="subtitle">Silakan tinggalkan pesan melalui live chat. <br/> AI akan merespons terlebih dahulu, dan admin menindaklanjuti pada jam aktif.</p>
+      <div class="status"><span class="dot"></span> Operational</div>
+
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/6285179884847" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+        <a class="btn" href="mailto:archex.office@gmail.com">Kirim Email</a>
+        <a class="btn" href="#chat">Buka Live Chat</a>
+      </div>
+    </section>
+
+    <!-- CONTENT GRID -->
+    <div class="grid" id="chat">
+      <div class="card">
+        <h3>Tentang kanal ini</h3>
+        <p class="meta">Kanal ini digunakan untuk komunikasi dan kebutuhan pesan. Respons diberikan pada jam aktif yang tertera. Mohon tinggalkan detail seperlunya agar tindak lanjut lebih cepat.</p>
+      </div>
+
+      <div class="card">
+        <h3>Waktu respons</h3>
+        <p class="meta">Rata-rata: 0–6 jam pada hari kerja. Di luar jam aktif, AI akan mencatat dan memberi tanggapan awal.</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      © 2025 Archex Support. All rights reserved.
+      <div class="small">Dengan mengirim pesan, Anda menyetujui penanganan data untuk keperluan komunikasi.</div>
+    </footer>
+  </div>
+
+  <!-- ====== TIDIO SCRIPT: paste di bawah ini setelah Anda mendapatkan kodenya ======
+  <script src="//code.tidio.co/XXXXXXXXXXXX.js" async></script>
+  =============================================================================== -->
+</body>
+</html>
